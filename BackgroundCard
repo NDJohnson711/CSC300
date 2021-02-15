@@ -1,0 +1,30 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package javaapplication26;
+
+/**
+ *
+ * @author legon
+ */
+public class Card {
+    int attack;
+    int mana;
+    int defense;
+    String name;
+    
+    public Card(String name, int attack, int mana, int defense)
+    {
+        this.attack = attack;
+        this.mana = mana;
+        this.defense = defense;
+        this.name = name;
+    }
+    void display(){
+        
+        System.out.println("Name:" +this.name + "\nCost:" +this.mana + "\nAttack: " +this.attack + "\nDefence: " +this.defense);
+        System.out.format("Name: %s\nCost: %d \nAtttack: %d Defense: %d\n", this.name, this.mana, this.attack, this.defense );
+}
+}
