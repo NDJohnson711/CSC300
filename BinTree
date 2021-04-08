@@ -1,0 +1,36 @@
+#include <iostream>
+
+struct TreeNode
+{
+    // member vars
+    int data;
+    TreeNode* left;
+    TreeNode* right;
+    TreeNode* root;
+    
+
+    // constructor
+    TreeNode(int data) : data(data), left(nullptr), right(nullptr) {}
+};
+
+
+int main() {
+    // Make a new TreeNode
+    //TreeNode foo(5);
+    TreeNode root(5);
+    TreeNode leftC(4);
+    TreeNode rightC(6);
+
+    // Connect nodes
+    root.left = &leftC;
+    root.right = &rightC;
+    // Print info 
+    std::cout <<
+        "data: " << root.data <<
+        ", left: " << root.left->data <<
+        ", right: " << root.right->data <<
+        std::endl;
+    
+
+    return 0;
+}
