@@ -1,0 +1,111 @@
+#include "BinaryTree.h"
+#include <stdlib.h>
+#include<iostream>
+using namespace std;
+BinaryTree::BinaryTree()
+{
+	this->isEmpty = true;
+	this->leftC = NULL;
+	this->rightC = NULL;
+	this->count = 0;
+}
+BinaryTree::BinaryTree(int payload)
+{
+	BinaryTree(); //initally creates an empty tree
+	//make it not empty
+	this->isEmpty = false;
+	this->payload = payload;
+	this->count = 1;
+	
+}
+void BinaryTree::visitPreOrder()
+{
+	
+	cout << bt->getCount() << endl;
+
+}
+void BinaryTree::visitPostOrder()
+{
+	
+	if (!this->isEmpty)
+	{
+		if (this->leftC)
+		{
+			this->leftC->visitPostOrder();
+		}
+		cout << this->payload << "  ";
+		if (this->rightC)
+		{
+			this->rightC->visitPostOrder();
+		}
+		
+	}
+
+}
+void BinaryTree::visitInOrder()
+{
+	//visit leftC if there
+	//visit middle
+	//visit righrc if there
+	if (!this->isEmpty)
+	{
+		if (this->leftC)
+		{
+			this->leftC->visitInOrder();
+		}
+		cout << this->payload << "  ";
+		if (this->rightC)
+		{
+			this->rightC->visitInOrder();
+		}
+		//cout<< this->payload << "  ";
+	}
+	
+}
+int BinaryTree::getCount()
+{
+	return this->count + 1;
+}
+
+int BinaryTree::getPayload()
+{
+	return this->payload;
+}
+
+void BinaryTree::add(int payload)
+{
+	if (this->isEmpty )
+	{
+		this->payload = payload;
+		this->isEmpty = false;
+		this->count++;
+	}
+	else if (payload <= this->payload) //we need to add to the left
+	{
+		if (this->leftC)
+		{
+			//add this to the left
+			this->leftC->add(payload);
+		}
+		else
+		{
+			//create left child with this payload
+			this->leftC = new BinaryTree(payload);
+			this->count++;
+		}
+	}
+	else 
+	{
+		if (this->rightC)
+		{
+			//add this to the left
+			this->rightC->add(payload);
+		}
+		else
+		{
+			//create left child with this payload
+			this->rightC = new BinaryTree(payload);
+			this->count++;
+		}
+	}
+}
