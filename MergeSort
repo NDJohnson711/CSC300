@@ -59,57 +59,51 @@ void mergeSort(int arr[], int a, int b, int c)
     int n2 = c - b;
 
     // Create temp arrays
-    int L[n1], R[n2];
+    int A[n1], B[n2];
 
-    // Copy data to temp arrays L[] and R[]
+    // Copy data to temp arrays A[] and B[]
     for (int i = 0; i < n1; i++)
-        L[i] = arr[a + i];
+        A[i] = arr[a + i];
     for (int j = 0; j < n2; j++)
-        R[j] = arr[b + 1 + j];
-
-    // Merge the temp arrays back into arr[l..r]
+        B[j] = arr[b + 1 + j];
 
     // Initial index of first subarray
-    int i = 0;
+    int d = 0;
 
     // Initial index of second subarray
-    int j = 0;
+    int e = 0;
 
     // Initial index of merged subarray
-    int k = l;
+    int f = l;
 
-    while (i < n1 && j < n2) {
-        if (L[i] <= R[j]) {
-            arr[k] = L[i];
-            i++;
+    while (d < n1 && e < n2) {
+        if (A[d] <= B[e]) {
+            arr[f] = L[d];
+            d++;
         }
         else {
-            arr[k] = R[j];
-            j++;
+            arr[f] = B[e];
+            e++;
         }
-        k++;
+        f++;
     }
 
-    // Copy the remaining elements of
-    // L[], if there are any
-    while (i < n1) {
-        arr[k] = L[i];
-        i++;
-        k++;
+    
+    while (d < n1) {
+        arr[f] = A[d];
+        d++;
+        f++;
     }
 
-    // Copy the remaining elements of
-    // R[], if there are any
-    while (j < n2) {
-        arr[k] = R[j];
-        j++;
-        k++;
+   
+    while (e < n2) {
+        arr[f] = B[e];
+        e++;
+        f++;
     }
 }
 
-// l is for left index and r is
-// right index of the sub-array
-// of arr to be sorted */
+
 void merge(int arr[], int a, int b) {
     if (a >= b) {
         return;//returns recursively
